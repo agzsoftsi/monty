@@ -1,19 +1,19 @@
 #include "monty.h"
 /**
- * _empty_file - verify if line of file needs to be tokenized
+ * is_empty - checks if line needs to be tokenized
  * @str: pointer to string
- * Return: 1 is tokenize, 0 if not tokenize
+ * Return: 1 if it is, 0 if not
  */
-int _empty_file(char *str)
+int is_empty(char *str)
 {
-	int con;
+	int i;
 
-	con = 0;
-	while (str[con] != '\n' && str[con] != '\0')
+	i = 0;
+	while (str[i] != '\n' && str[i] != '\0')
 	{
-		if (str[con] != ' ' && str[con] != '#')
+		if (str[i] != ' ' && str[i] != '#')
 			return (0);
-		con++;
+		i++;
 	}
 	return (1);
 }

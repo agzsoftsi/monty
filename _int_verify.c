@@ -1,11 +1,10 @@
 #include "monty.h"
 /**
- * _verify_int - checks if string contains all digits
+ * is_int - checks if string contains all digits
  * @str: pointer to string
  * Return: 1 if it is, 0 if not
  */
-
-int _verify_int(char *str)
+int is_int(char *str)
 {
 	int i;
 

@@ -1,37 +1,14 @@
 #ifndef MONTY_H
 #define MONTY_H
 
-/* Libraries */
-
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <sys/types.h>
-#include <errno.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <string.h>
 #include <math.h>
-
-/* Global Variables */
-
-/**
- * struct global_s - hold global variables
- * @rval: return value of functions
- * @mode: mode of list
- * @cmd: byte code command
- * @pushval: argument to push command
- */
-typedef struct global_s
-{
-	int rval;
-	int mode;
-	char *cmd;
-	char *pushval;
-} global_t;
-
-extern global_t globals;
-global_t globals;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -44,13 +21,13 @@ global_t globals;
  */
 typedef struct stack_s
 {
-	int n;
-	struct stack_s *prev;
-	struct stack_s *next;
+int n;
+struct stack_s *prev;
+struct stack_s *next;
 } stack_t;
 
 /**
- * struct instruction_s - opcode and its function
+ * struct instruction_s - opcoode and its function
  * @opcode: the opcode
  * @f: function to handle the opcode
  *
@@ -59,29 +36,62 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
+char *opcode;
+void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/* Prototypes */
+/**
+ * struct global_s - hold global variables
+ * @retval: return value of functions
+ * @mode: mode of list
+ * @command: byte code command
+ * @push_val: argument to push command
+ */
+typedef struct global_s
+{
+int retval;
+int mode;
+char *command;
+char *push_val;
+} global_t;
 
-void _pall(stack_t **h, unsigned int line_number);
-void _pint(stack_t **h, unsigned int line_number);
-void _add(stack_t **h, unsigned int line_number);
-void _sub(stack_t **h, unsigned int line_number);
+/* global variables */
+extern global_t globals;
+global_t globals;
+
+/* print stack opcodes */
+void pall(stack_t **h, unsigned int line_number);
+void pint(stack_t **h, unsigned int line_number);
+void pchar(stack_t **h, unsigned int line_number);
+void pstr(stack_t **h, unsigned int line_number);
+void prev(stack_t **h, unsigned int line_num);
+
+/* math stack opcodes */
+void add(stack_t **h, unsigned int line_number);
+void sub(stack_t **h, unsigned int line_number);
 void _div(stack_t **h, unsigned int line_number);
-void _mul(stack_t **h, unsigned int line_number);
-void _mod(stack_t **h, unsigned int line_number);
-void _nop(stack_t **h, unsigned int line_number);
-void _swap(stack_t **h, unsigned int line_number);
-void _pop(stack_t **head, unsigned int line_number);
-void _push_node_beginning(stack_t **head, int n);
-void _push_node_mode(stack_t **head, unsigned int line_number);
-void _push_node_end(stack_t **head, int n);
-void _tokenizer(char *line);
-int _empty_file(char *str);
-size_t _len_list(stack_t *h);
-void _free_list(stack_t *head);
-int _select_opcode(stack_t **head, unsigned int line_number);
-int _verify_int(char *str);
+void mul(stack_t **h, unsigned int line_number);
+void mod(stack_t **h, unsigned int line_number);
+
+/* manipulate stack */
+void nop(stack_t **h, unsigned int line_number);
+void swap(stack_t **h, unsigned int line_number);
+void pop(stack_t **head, unsigned int line_number);
+void rotl(stack_t **head, unsigned int line_number);
+void rotr(stack_t **head, unsigned int line_number);
+
+/* push stack opcodes */
+void push_node(stack_t **head, int n);
+void push_node_mode(stack_t **head, unsigned int line_number);
+void push_node_end(stack_t **head, int n);
+
+/* Stack helper functions */
+void tokenize(char *line);
+int is_empty(char *str);
+int is_int(char *str);
+size_t list_len(stack_t *h);
+void free_list(stack_t *head);
+
+/* find opcode function pointer */
+int find_opcode(stack_t **head, unsigned int line_number);
 #endif

@@ -1,19 +1,19 @@
 #include "monty.h"
-
 /**
- * _free_list - free a list
- * @head: is the linked list to free
+ * free_list - frees a list
+ * @head: linked list to free
+ * Return: none
  */
-void _free_list(stack_t *head)
+void free_list(stack_t *head)
 {
-	stack_t *temp;
+	stack_t *tmp;
 
 	while (1)
 	{
 		if (head == NULL)
 			break;
-		temp = head;
-		head = temp->next;
-		free(temp);
+		tmp = head;
+		head = tmp->next;
+		free(tmp);
 	}
 }

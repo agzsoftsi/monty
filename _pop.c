@@ -1,18 +1,18 @@
 #include "monty.h"
 /**
- * _pop - function that deletes the head node
+ * pop - function that deletes the head node
  * @head: pointer to head
  * @line_number: line number in the file with Monty bytecode
  * Return: none
  */
-void _pop(stack_t **head, unsigned int line_number)
+void pop(stack_t **head, unsigned int line_number)
 {
 	stack_t *temp;
 
 	if (!*head)
 	{
 		printf("L%u: can't pop an empty stack\n", line_number);
-		globals.rval = -1;
+		globals.retval = -1;
 		return;
 	}
 	temp = *head;
@@ -20,5 +20,5 @@ void _pop(stack_t **head, unsigned int line_number)
 		temp->next->prev = NULL;
 	*head = temp->next;
 	free(temp);
-	globals.rval = 0;
+	globals.retval = 0;
 }

@@ -1,11 +1,11 @@
 #include "monty.h"
 /**
- * _push_node_beginning - adds a new node at the beginning of a list
+ * push_node - adds a new node at the beginning of a list
  * @head: head pointer
  * @n: integer value of new node
  * Return: none
  */
-void _push_node_beginning(stack_t **head, int n)
+void push_node(stack_t **head, int n)
 {
 	stack_t *new_node;
 
@@ -13,7 +13,7 @@ void _push_node_beginning(stack_t **head, int n)
 	if (new_node == NULL)
 	{
 		printf("Error: malloc failed\n");
-		globals.rval = -1;
+		globals.retval = -1;
 		return;
 	}
 	new_node->n = n;
@@ -25,5 +25,5 @@ void _push_node_beginning(stack_t **head, int n)
 		(*head)->prev = new_node;
 	}
 	*head = new_node;
-	globals.rval = 0;
+	globals.retval = 0;
 }

@@ -1,12 +1,13 @@
 #include "monty.h"
 /**
- * _tokenizer - tokenizes the line from file
- * @file_line: pointer to line from file
+ * tokenize - toknizes the line from file
+ * @line: pointer to line from file
+ * Return: none
  */
-void _tokenizer(char *file_line)
+void tokenize(char *line)
 {
-	char *delimiter = "\t\n ";
+	char *delim = "\t\n ";
 
-	globals.cmd = strtok(file_line, delimiter);
-	globals.pushval = strtok(NULL, delimiter);
+	globals.command = strtok(line, delim);
+	globals.push_val = strtok(NULL, delim);
 }

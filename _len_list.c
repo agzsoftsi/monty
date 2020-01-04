@@ -1,20 +1,20 @@
 #include "monty.h"
-
 /**
- * _len_list - count number of elements in a list
+ * list_len - returns the number of elements in a list
  * @h: head pointer
- * Return: number of elements
+ * Return: the number of elements
  */
-size_t _len_list(stack_t *h)
+size_t list_len(stack_t *h)
 {
-	stack_t *temp;
-	size_t count = 0;
+	stack_t *tmp;
+	size_t count;
 
-	temp = h;
-	while (temp)
+	tmp = h;
+	count = 0;
+	while (tmp)
 	{
 		count++;
-		temp = temp->next;
+		tmp = tmp->next;
 	}
 	return (count);
 }

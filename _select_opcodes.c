@@ -5,20 +5,20 @@
  * @line_number: number of lines in the file
  * Return: -1 on failure
  */
-int _select_opcode(stack_t **head, unsigned int line_number)
+int find_opcode(stack_t **head, unsigned int line_number)
 {
 	instruction_t opcodes[] = {
-		{"push", _push_node_mode},
-		{"pall", _pall},
-		{"pint", _pint},
-		{"pop", _pop},
-		{"swap", _swap},
-		{"add", _add},
-		{"nop", _nop},
-		{"sub", _sub},
+		{"push", push_node_mode},
+		{"pall", pall},
+		{"pint", pint},
+		{"pop", pop},
+		{"swap", swap},
+		{"add", add},
+		{"nop", nop},
+		{"sub", sub},
 		{"div", _div},
-		{"mul", _mul},
-		{"mod", _mod},
+		{"mul", mul},
+		{"mod", mod},
 		{NULL, NULL}
 	};
 
@@ -27,15 +27,15 @@ int _select_opcode(stack_t **head, unsigned int line_number)
 	i = 0;
 	while (opcodes[i].opcode != NULL)
 	{
-		if (strncmp(globals.cmd, opcodes[i].opcode,
-					strlen(globals.cmd)) == 0)
+		if (strncmp(globals.command, opcodes[i].opcode,
+					strlen(globals.command)) == 0)
 		{
 			opcodes[i].f(head, line_number);
-			return (globals.rval);
+			return (globals.retval);
 		}
 		i++;
 	}
-	printf("L%u: unknown instruction %s\n", line_number, globals.cmd);
-	globals.rval = -1;
-	return (globals.rval);
+	printf("L%u: unknown instruction %s\n", line_number, globals.command);
+	globals.retval = -1;
+	return (globals.retval);
 }
