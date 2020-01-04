@@ -13,25 +13,22 @@
 #include <string.h>
 #include <math.h>
 
-
+/* Global Variables */
 
 /**
  * struct global_s - hold global variables
- * @retval: return value of functions
+ * @rval: return value of functions
  * @mode: mode of list
- * @command: byte code command
- * @push_val: argument to push command
+ * @cmd: byte code command
+ * @pushval: argument to push command
  */
 typedef struct global_s
 {
-	int retval;
+	int rval;
 	int mode;
-	char *command;
-	char *push_val;
+	char *cmd;
+	char *pushval;
 } global_t;
-
-
-/* Global Variables */
 
 extern global_t globals;
 global_t globals;
@@ -68,42 +65,23 @@ typedef struct instruction_s
 
 /* Prototypes */
 
-/* print stack opcodes */
-void pall(stack_t **h, unsigned int line_number);
-void pint(stack_t **h, unsigned int line_number);
-void pchar(stack_t **h, unsigned int line_number);
-void pstr(stack_t **h, unsigned int line_number);
-void prev(stack_t **h, unsigned int line_num);
-
-/* math stack opcodes */
-void add(stack_t **h, unsigned int line_number);
-void sub(stack_t **h, unsigned int line_number);
+void _pall(stack_t **h, unsigned int line_number);
+void _pint(stack_t **h, unsigned int line_number);
+void _add(stack_t **h, unsigned int line_number);
+void _sub(stack_t **h, unsigned int line_number);
 void _div(stack_t **h, unsigned int line_number);
-void mul(stack_t **h, unsigned int line_number);
-void mod(stack_t **h, unsigned int line_number);
-
-/* manipulate stack */
-void nop(stack_t **h, unsigned int line_number);
-void swap(stack_t **h, unsigned int line_number);
-void pop(stack_t **head, unsigned int line_number);
-void rotl(stack_t **head, unsigned int line_number);
-void rotr(stack_t **head, unsigned int line_number);
-
-/* push stack opcodes */
-void push_node(stack_t **head, int n);
-void push_node_mode(stack_t **head, unsigned int line_number);
-void push_node_end(stack_t **head, int n);
-void stack(stack_t **h, unsigned int line_num);
-void queue(stack_t **h, unsigned int line_num);
-
-/* Stack helper functions */
-void tokenize(char *line);
-int is_empty(char *str);
-int is_int(char *str);
-size_t list_len(stack_t *h);
-void free_list(stack_t *head);
-
-/* find opcode function pointer */
-int find_opcode(stack_t **head, unsigned int line_number);
+void _mul(stack_t **h, unsigned int line_number);
+void _mod(stack_t **h, unsigned int line_number);
+void _nop(stack_t **h, unsigned int line_number);
+void _swap(stack_t **h, unsigned int line_number);
+void _pop(stack_t **head, unsigned int line_number);
+void _push_node(stack_t **head, int n);
+void _push_node_mode(stack_t **head, unsigned int line_number);
+void _push_node_end(stack_t **head, int n);
+void _tokenizer(char *line);
+int _empty_file(char *str);
+size_t _len_list(stack_t *h);
+void _free_list(stack_t *head);
+int _opcodes(stack_t **head, unsigned int line_number);
 
 #endif
