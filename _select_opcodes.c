@@ -8,17 +8,17 @@
 int _select_opcode(stack_t **head, unsigned int line_number)
 {
 	instruction_t opcodes[] = {
-		{"push", push_node_mode},
-		{"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
-		{"swap", swap},
-		{"add", add},
-		{"nop", nop},
-		{"sub", sub},
+		{"push", _push_node_mode},
+		{"pall", _pall},
+		{"pint", _pint},
+		{"pop", _pop},
+		{"swap", _swap},
+		{"add", _add},
+		{"nop", _nop},
+		{"sub", _sub},
 		{"div", _div},
-		{"mul", mul},
-		{"mod", mod},
+		{"mul", _mul},
+		{"mod", _mod},
 		{NULL, NULL}
 	};
 

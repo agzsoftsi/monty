@@ -14,10 +14,10 @@ int main(int ac, char **av)
 	stack_t *list_head;
 	int len;
 
-	globals.retval = 0;
+	globals.rval = 0;
 	globals.mode = 0;
-	globals.command = NULL;
-	globals.push_val = NULL;
+	globals.cmd = NULL;
+	globals.pushval = NULL;
 	line = NULL;
 	list_head = NULL;
 	len = 0;
@@ -37,22 +37,22 @@ int main(int ac, char **av)
 	while ((len = getline(&line, &line_len, fp)) != -1)
 	{
 		line_number++;
-		if (!(line[0] == '\n') && !(line[0] == '#') && !is_empty(line))
+		if (!(line[0] == '\n') && !(line[0] == '#') && !_empty_file(line))
 		{
-			tokenize(line); /* tokenize line */
-			if (globals.command[0] == '#')
+			_tokenizer(line); /* tokenize line */
+			if (globals.cmd[0] == '#')
 				continue;
-			globals.retval = find_opcode(&list_head, line_number);
-			if (globals.retval == -1)
+			globals.rval = _select_opcode(&list_head, line_number);
+			if (globals.rval == -1)
 			{
 				break;
 			}
 		}
 	}
 	free(line);
-	free_list(list_head);
+	_free_list(list_head);
 	fclose(fp);
-	if (globals.retval == -1)
+	if (globals.rval == -1)
 		exit(EXIT_FAILURE);
 	else
 		exit(EXIT_SUCCESS);

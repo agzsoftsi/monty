@@ -75,13 +75,13 @@ void _mod(stack_t **h, unsigned int line_number);
 void _nop(stack_t **h, unsigned int line_number);
 void _swap(stack_t **h, unsigned int line_number);
 void _pop(stack_t **head, unsigned int line_number);
-void _push_node(stack_t **head, int n);
+void _push_node_beginning(stack_t **head, int n);
 void _push_node_mode(stack_t **head, unsigned int line_number);
 void _push_node_end(stack_t **head, int n);
 void _tokenizer(char *line);
 int _empty_file(char *str);
 size_t _len_list(stack_t *h);
 void _free_list(stack_t *head);
-int _opcodes(stack_t **head, unsigned int line_number);
-
+int _select_opcode(stack_t **head, unsigned int line_number);
+int _verify_int(char *str);
 #endif

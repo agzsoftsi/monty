@@ -10,17 +10,17 @@
  */
 void _push_node_mode(stack_t **head, unsigned int line_number)
 {
-int n;
+	int n;
 
-if (!globals.pushval || !_verify_int(globals.pushval))
-{
-printf("L%u: usage: push integer\n", line_number);
-globals.rval = -1;
-return;
-}
-n = atoi(globals.pushval);
-if (globals.mode == 0)
-_push_node(head, n);
-else
-push_node_end(head, n);
+	if (!globals.pushval || !_verify_int(globals.pushval))
+	{
+		printf("L%u: usage: push integer\n", line_number);
+		globals.rval = -1;
+		return;
+	}
+	n = atoi(globals.pushval);
+	if (globals.mode == 0)
+		_push_node_beginning(head, n);
+	else
+		_push_node_end(head, n);
 }
