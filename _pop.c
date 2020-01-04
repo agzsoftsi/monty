@@ -20,5 +20,5 @@ void _pop(stack_t **head, unsigned int line_number)
 		temp->next->prev = NULL;
 	*head = temp->next;
 	free(temp);
-	globals.rgg=val = 0;
+	globals.rval = 0;
 }

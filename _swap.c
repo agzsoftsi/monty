@@ -9,7 +9,7 @@ void _swap(stack_t **h, unsigned int line_number)
 {
 	stack_t *tmp;
 
-	if (list_len(*h) < 2)
+	if (_len_list(*h) < 2)
 	{
 		printf("L%u: can't swap, stack too short\n", line_number);
 		globals.rval = -1;
