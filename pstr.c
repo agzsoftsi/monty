@@ -1,23 +1,20 @@
 #include "monty.h"
-#include "monty.h"
-
 
 /**
- * pstr - pstri function
+ * _pstr - prints the string starting at the top of the stack
  * @stack: head
- * @num_linea: num linea
- * Return Nothing
+ * @num_line: num line
  */
-void pstr(stack_t **stack, unsigned int num_linea)
+void _pstr(stack_t **stack, unsigned int num_line)
 {
-	stack_t *ojo;
+	stack_t *temp;
 
-	ojo = *stack;
-	if (num_linea)
-		while (ojo && ojo->n != 0 && ojo->n > 0 && ojo->n < 128)
+	temp = *stack;
+	if (num_line)
+		while (temp && temp->n != 0 && temp->n > 0 && temp->n < 128)
 		{
-			printf("%c", ojo->n);
-			ojo = ojo->next;
+			printf("%c", temp->n);
+			temp = temp->next;
 		}
 	printf("\n");
 }

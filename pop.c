@@ -1,29 +1,28 @@
 #include "monty.h"
 
 /**
- * pop - delete first noce
- * @stack: head of the linked list
- * @num_linea: number of the line
- * Return: Nothing
+ * _pop - removes the top element of the stack
+ * @stack: head
+ * @num_line: number line
  */
-void pop(stack_t **stack, unsigned int num_linea)
+void _pop(stack_t **stack, unsigned int num_line)
 {
-	stack_t *ojo;
+	stack_t *temp;
 
-	ojo = *stack;
-	if (ojo == NULL)
+	temp = *stack;
+	if (temp == NULL)
 	{
-		dprintf(2, "L%d: can't pop an empty stack\n", num_linea);
-		free(hola.linea);
-		fclose(hola.fil);
+		dprintf(2, "L%d: can't pop an empty stack\n", num_line);
+		free(global.line);
+		fclose(global.fil);
 		free_l(stack);
 		exit(EXIT_FAILURE);
 	}
 	if ((*stack)->next)
 	{
-		*stack = ojo->next;
+		*stack = temp->next;
 		(*stack)->prev = NULL;
-		free(ojo);
+		free(temp);
 	}
 	else
 		free_l(stack);

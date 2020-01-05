@@ -1,22 +1,21 @@
 #include "monty.h"
 /**
- * pint - pint function
+ * _pint - prints the value at the top of the stack
  * @stack: head
- * @num_linea: num linea
- * Return: void function
+ * @num_line: num line
  */
-void pint(stack_t **stack, unsigned int num_linea)
+void _pint(stack_t **stack, unsigned int num_line)
 {
-	stack_t *ojo;
+	stack_t *temp;
 
-	ojo = *stack;
-	if (ojo == NULL)
+	temp = *stack;
+	if (temp == NULL)
 	{
-		free(hola.linea);
-		fclose(hola.fil);
+		free(global.line);
+		fclose(global.fil);
 		free_l(stack);
-		dprintf(2, "L%u: can't pint, stack empty\n", num_linea);
+		dprintf(2, "L%u: can't pint, stack empty\n", num_line);
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", ojo->n);
+	printf("%d\n", temp->n);
 }

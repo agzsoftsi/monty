@@ -1,20 +1,20 @@
 #include "monty.h"
 
 /**
- * pall - pall function
+ * _pall - prints all the values on the stack,
+ * starting from the top of the stack
  * @stack: head
- * @num_linea: num linea
- * Return: void function
+ * @num_line: num linea
  */
-void pall(stack_t **stack, unsigned int num_linea)
+void _pall(stack_t **stack, unsigned int num_line)
 {
-	stack_t *ojo;
+	stack_t *temp;
 
-	ojo = *stack;
-	if (num_linea)
-		while (ojo)
+	temp = *stack;
+	if (num_line)
+		while (temp)
 		{
-			printf("%d\n", ojo->n);
-			ojo = ojo->next;
+			printf("%d\n", temp->n);
+			temp = temp->next;
 		}
 }

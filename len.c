@@ -2,17 +2,17 @@
 
 
 /**
- * tamanio - size
- * @linea: linea
- * Return: linea
+ * _size_line - size of the line
+ * @line: line to read
+ * Return: line
  */
-int tamanio(char *linea)
+int _size_line(char *line)
 {
-	unsigned int contador = 0;
+	unsigned int con = 0;
 
-	while (linea[contador])
+	while (line[con])
 	{
-		contador++;
+		con++;
 	}
-	return (contador);
+	return (con);
 }

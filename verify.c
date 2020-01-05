@@ -1,24 +1,24 @@
 #include "monty.h"
 
 /**
- * verif - verif
- * @numero: number
+ * _verify1 - verify function
+ * @num: number
  * Return: always 0
  */
-int verif(char *numero)
+int _verify1(char *num)
 {
-	int ojo = 0;
+	int temp = 0;
 
-	if (!numero)
+	if (!num)
 		return (1);
 
-	if (numero[ojo] == 45)
-		ojo++;
-	while (numero[ojo])
+	if (num[temp] == 45)
+		temp++;
+	while (num[temp])
 	{
-		if (numero[ojo] < 48 || numero[ojo] > 57)
+		if (num[temp] < 48 || num[temp] > 57)
 			return (-1);
-		ojo++;
+		temp++;
 	}
 	return (0);
 }

@@ -1,50 +1,49 @@
 #include "monty.h"
 
 /**
- * push - push function
+ * _push - pushes an element to the stack
  * @stack: head
- * @num_linea: number of line
- * Return: Always 0 (Success)
+ * @num_line: number line
  */
-void push(stack_t **stack, unsigned int num_linea)
+void _push(stack_t **stack, unsigned int num_line)
 {
-	stack_t *ojo;
+	stack_t *temp;
 
-	ver2(stack, num_linea);
-	if (hola.token)
+	_verify2(stack, num_line);
+	if (global.token)
 	{
-		ojo = malloc(sizeof(stack_t));
-		if (ojo == NULL)
+		temp = malloc(sizeof(stack_t));
+		if (temp == NULL)
 		{
 			fputs("Error: malloc failed\n", stderr);
 			exit(EXIT_FAILURE);
 		}
-		ojo->n = hola.numero, ojo->next = NULL;
-		ojo->prev = NULL;
+		temp->n = global.num, temp->next = NULL;
+		temp->prev = NULL;
 		if (*stack)
 		{
-			if (hola.flag == 1)
+			if (global.flag == 1)
 			{
-				ojo->next = *stack;
-				(*stack)->prev = ojo;
-				*stack = ojo;
+				temp->next = *stack;
+				(*stack)->prev = temp;
+				*stack = temp;
 			}
 			else
 			{
 				while ((*stack)->next)
 					*stack = (*stack)->next;
-				(*stack)->next = ojo, ojo->prev = *stack;
+				(*stack)->next = temp, temp->prev = *stack;
 				while ((*stack)->prev)
 					*stack = (*stack)->prev;
 			}
 		}
 		else
-			*stack = ojo;
+			*stack = temp;
 	}
 	else
 	{
-		free(hola.linea), fclose(hola.fil);
-		dprintf(2, "L%u: usage: push integer\n", num_linea);
+		free(global.line), fclose(global.fil);
+		dprintf(2, "L%u: usage: push integer\n", num_line);
 		free_l(stack);
 		exit(EXIT_FAILURE);
 	}

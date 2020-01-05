@@ -1,26 +1,25 @@
 #include "monty.h"
 /**
- * rotr - rotr function
+ * _rotr - rotates the stack to the bottom
  * @stack: head
- * @num_linea: num linea
- * Return Nothing
+ * @num_line: num line
  */
 
-void rotr(stack_t **stack, unsigned int num_linea)
+void _rotr(stack_t **stack, unsigned int num_line)
 {
-	stack_t *ojo2;
+	stack_t *temp2;
 
 	if (*stack && (*stack)->next)
 	{
-		ojo2 = *stack;
-		if (num_linea)
-			while (ojo2->next)
+		temp2 = *stack;
+		if (num_line)
+			while (temp2->next)
 			{
-				ojo2 = ojo2->next;
+				temp2 = temp2->next;
 			}
-		ojo2->next = *stack;
-		ojo2->prev->next = NULL;
-		ojo2->prev = NULL;
-		*stack = ojo2;
+		temp2->next = *stack;
+		temp2->prev->next = NULL;
+		temp2->prev = NULL;
+		*stack = temp2;
 	}
 }

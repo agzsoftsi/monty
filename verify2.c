@@ -1,20 +1,19 @@
 #include "monty.h"
 /**
- * ver2 - ver2 function
- * @stack: heade
- * @contador: integer
- * Return: nothing
+ * _verify2 - verify 2 function
+ * @stack: head
+ * @con: integer
  */
-void ver2(stack_t **stack, unsigned int contador)
+void _verify2(stack_t **stack, unsigned int con)
 {
-	if (verif(hola.token) == 0)
-		hola.numero = atoi(hola.token);
+	if (_verify1(global.token) == 0)
+		global.num = atoi(global.token);
 	else
 	{
-		dprintf(2, "L%u: usage: push integer\n", contador);
+		dprintf(2, "L%u: usage: push integer\n", con);
 		free_l(stack);
-		free(hola.linea);
-		fclose(hola.fil);
+		free(global.line);
+		fclose(global.fil);
 		exit(EXIT_FAILURE);
 	}
 }

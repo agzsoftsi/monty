@@ -1,15 +1,14 @@
 #include "monty.h"
 
 /**
- * nop - nop
- * @stack: node head
- * @num_linea: number of the line
- * Return: nothing
+ * _nop - doesn’t do anything.
+ * @stack: head
+ * @num_line: number of the line
  */
-void nop(stack_t **stack, unsigned int num_linea)
+void _nop(stack_t **stack, unsigned int num_line)
 {
 	if (*stack)
 	{};
-	if (num_linea)
+	if (num_line)
 	{};
 }

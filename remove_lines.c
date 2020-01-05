@@ -1,14 +1,14 @@
 #include "monty.h"
 
 /**
- * quitarsalto - remove line
- * @linea: linea
- * Return: linea
+ * delete_jump - remove line
+ * @line: line
+ * Return: line
  */
-char quitarsalto(char *linea)
+char delete_jump(char *line)
 {
-	int ta = tamanio(linea);
+	int ta = _size_line(line);
 
-	linea[ta - 1] = '\0';
-	return (*linea);
+	line[ta - 1] = '\0';
+	return (*line);
 }

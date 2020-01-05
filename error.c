@@ -1,16 +1,15 @@
 #include "monty.h"
 
 /**
- * err - err function
- * @stack: heade
- * @x: integer
- * Return: nothing
+ * _error - manage the error
+ * @stack: head
+ * @n: integer
  */
-void err(stack_t **stack, unsigned int x)
+void _error(stack_t **stack, unsigned int n)
 {
-	dprintf(2, "L%u: unknown instruction %s\n", x, hola.linea);
-	free(hola.linea);
-	fclose(hola.fil);
+	dprintf(2, "L%u: unknown instruction %s\n", n, global.line);
+	free(global.line);
+	fclose(global.fil);
 	free_l(stack);
 	if (stack)
 	{

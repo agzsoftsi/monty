@@ -1,5 +1,5 @@
 #include "monty.h"
-g_t hola;
+globals_t global;
 /**
  * main - main function
  * @argc: number of the arguments
@@ -10,39 +10,39 @@ int main(int argc, char **argv)
 {
 	stack_t *stack = NULL;
 	size_t numbytes = 0;
-	int bytesleidos = 0;
-	unsigned int contador = 1;
+	int bytesr = 0;
+	unsigned int con = 1;
 
-	hola.flag = 1;
-	hola.linea = NULL;
+	global.flag = 1;
+	global.line = NULL;
 	if (argc != 2)
 	{
 		fputs("USAGE: monty file\n", stderr);
 		exit(EXIT_FAILURE);
 	}
-	hola.fil = fopen(argv[1], "r");
-	if (hola.fil == NULL)
+	global.fil = fopen(argv[1], "r");
+	if (global.fil == NULL)
 	{
 		dprintf(2, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	while ((bytesleidos = getline(&hola.linea, &numbytes, hola.fil)) != EOF)
+	while ((bytesr = getline(&global.line, &numbytes, global.fil)) != EOF)
 	{
-		quitarsalto(hola.linea);
-		if (hola.linea[0] != 35)
+		delete_jump(global.line);
+		if (global.line[0] != 35)
 		{
-			hola.token = strtok(hola.linea, " \t\n");
-			hola.opco = hola.token;
-			if (hola.opco != NULL)
+			global.token = strtok(global.line, " \t\n");
+			global.opco = global.token;
+			if (global.opco != NULL)
 			{
-				hola.token = strtok(NULL, " \t\n");
-				func(hola.opco)(&stack, contador);
+				global.token = strtok(NULL, " \t\n");
+				func(global.opco)(&stack, con);
 			}
-			contador++;
+			con++;
 		}
 	}
 	free_l(&stack);
-	free(hola.linea);
-	fclose(hola.fil);
+	free(global.line);
+	fclose(global.fil);
 	return (0);
 }

@@ -1,33 +1,32 @@
 #include "monty.h"
 
 /**
- * swap - swap function
- * @stack: head node
- * @num_linea: number of line
- * Return: Void function
+ * _swap - swaps the top two elements of the stack
+ * @stack: head
+ * @num_line: number line
  */
-void swap(stack_t **stack, unsigned int num_linea)
+void _swap(stack_t **stack, unsigned int num_line)
 {
-	stack_t *ojo;
+	stack_t *temp;
 
 	if (*stack && (*stack)->next)
 	{
-		ojo = (*stack)->next;
-		if (ojo == NULL)
+		temp = (*stack)->next;
+		if (temp == NULL)
 		{
 			exit(0);
 		}
-		(*stack)->next = ojo->next;
-		(*stack)->prev = ojo;
-		ojo->next = *stack;
-		ojo->prev = NULL;
-		*stack = ojo;
+		(*stack)->next = temp->next;
+		(*stack)->prev = temp;
+		temp->next = *stack;
+		temp->prev = NULL;
+		*stack = temp;
 	}
 	else
 	{
-		dprintf(2, "L%u: can't swap, stack too short\n", num_linea);
-		free(hola.linea);
-		fclose(hola.fil);
+		dprintf(2, "L%u: can't swap, stack too short\n", num_line);
+		free(global.line);
+		fclose(global.fil);
 		free_l(stack);
 		exit(EXIT_FAILURE);
 	}

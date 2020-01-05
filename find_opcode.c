@@ -3,40 +3,40 @@
 /**
  * func - pointers to functions
  * @tokens: arguments
- * Return: NULL
+ * Return: function
  */
 
-void (*func(char *tokens))(stack_t **stack, unsigned int num_linea)
+void (*func(char *tokens))(stack_t **stack, unsigned int num_line)
 {
 	instruction_t ops[] = {
-		{"push", push},
-		{"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
-		{"swap", swap},
-		{"add", add},
-		{"nop", nop},
-		{"sub", sub},
-		{"div", divi},
+		{"push", _push},
+		{"pall", _pall},
+		{"pint", _pint},
+		{"pop", _pop},
+		{"swap", _swap},
+		{"add", _add},
+		{"nop", _nop},
+		{"sub", _sub},
+		{"div", _div},
 		{"mul", _mul},
 		{"mod", _mod},
-		{"pchar", pchar},
-		{"pstr", pstr},
-		{"rotl", rotl},
-		{"rotr", rotr},
-		{"stack", stack},
-		{"queue", queue},
-		{"err", err},
-		{"#", nop},
+		{"pchar", _pchar},
+		{"pstr", _pstr},
+		{"rotl", _rotl},
+		{"rotr", _rotr},
+		{"stack", _stack},
+		{"queue", _queue},
+		{"err", _error},
+		{"#", _nop},
 		{NULL, NULL}
 	};
 	int i = 0;
-	int o;
+	int opc;
 
 	while (i < 19)
 	{
-		o = strcmp(ops[i].opcode, tokens);
-		if (o == 0)
+		opc = strcmp(ops[i].opcode, tokens);
+		if (opc == 0)
 			return (ops[i].f);
 		i++;
 	}

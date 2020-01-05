@@ -1,13 +1,12 @@
 #include "monty.h"
 /**
- * queue - queue function
+ * _queue - sets the format of the data to a queue (FIFO)
  * @stack: head
- * @num_linea: num linea
- * Return Nothing
+ * @num_line: num line
  */
 
-void queue(stack_t **stack, unsigned int num_linea)
+void _queue(stack_t **stack, unsigned int num_line)
 {
-	if (stack || num_linea)
-		hola.flag = 0;
+	if (stack || num_line)
+		global.flag = 0;
 }

@@ -1,13 +1,12 @@
 #include "monty.h"
 /**
- * stack - stack function
+ * _stack - sets the format of the data to a stack (LIFO)
  * @stack: head
- * @num_linea: num linea
- * Return Nothing
+ * @num_line: num line
  */
 
-void stack(stack_t **stack, unsigned int num_linea)
+void _stack(stack_t **stack, unsigned int num_line)
 {
-	if (stack || num_linea)
-		hola.flag = 1;
+	if (stack || num_line)
+		global.flag = 1;
 }
