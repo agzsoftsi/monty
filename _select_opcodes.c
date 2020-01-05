@@ -19,6 +19,8 @@ int find_opcode(stack_t **head, unsigned int line_number)
 		{"div", _div},
 		{"mul", mul},
 		{"mod", mod},
+		{"stack", stack},
+		{"queue", queue},
 		{NULL, NULL}
 	};
 

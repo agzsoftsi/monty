@@ -84,6 +84,8 @@ void rotr(stack_t **head, unsigned int line_number);
 void push_node(stack_t **head, int n);
 void push_node_mode(stack_t **head, unsigned int line_number);
 void push_node_end(stack_t **head, int n);
+void stack(stack_t **h, unsigned int line_num);
+void queue(stack_t **h, unsigned int line_num);
 
 /* Stack helper functions */
 void tokenize(char *line);
